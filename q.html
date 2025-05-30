@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Pokémon Video Player</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.5s ease;
+        }
+        .video-container {
+            max-width: 800px;
+            width: 90%;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            animation: fadeIn 1s ease-in;
+        }
+        video {
+            width: 100%;
+            border-radius: 10px;
+        }
+        .controls {
+            text-align: center;
+            margin-top: 20px;
+        }
+        button {
+            padding: 10px 20px;
+            margin: 0 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: transform 0.3s, background-color 0.3s;
+        }
+        button:hover {
+            transform: scale(1.05);
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .title {
+            text-align: center;
+            color: white;
+            font-size: 24px;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+    </style>
+</head>
+<body>
+    <div class="video-container">
+        <div class="title">Pokémon Season 1 Episode 1</div>
+        <video id="videoPlayer" controls>
+            <source src="https://www.dropbox.com/scl/fi/bihf87unzxofxv3mseyqz/POKEMON-SEASON-1-EPISODE-1.mp4?rlkey=pj7ar6rtnaqpc81n6wovvr0fr&st=lq95klgl&dl=1" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <div class="controls">
+            <button onclick="changeVideo()" class="bg-blue-500 text-white">Next Video</button>
+        </div>
+    </div>
+
+    <script>
+        // Array of video URLs (currently only one, can add more when provided)
+        const videos = [
+            "https://www.dropbox.com/scl/fi/bihf87unzxofxv3mseyqz/POKEMON-SEASON-1-EPISODE-1.mp4?rlkey=pj7ar6rtnaqpc81n6wovvr0fr&st=lq95klgl&dl=1",
+            // Add more video URLs here when provided
+        ];
+
+        // Array of Pokémon-themed background styles (images and gradients)
+        const backgrounds = [
+            'url("https://images.unsplash.com/photo-1620131592953-6f65e8e4a7ec")', // Pokémon-like forest
+            'url("https://images.unsplash.com/photo-1610215681086-9a4f5e3b7522")', // Vibrant field
+            'linear-gradient(135deg, #ffcb05, #3c5aa6)', // Pokémon yellow/blue gradient
+            'linear-gradient(135deg, #ee1515, #f7f7f7)', // Pokéball red/white gradient
+            'url("https://images.unsplash.com/photo-1600585154340-be6161a56a0c")', // Scenic nature
+        ];
+
+        // Array of UI color schemes for buttons (Pokémon-inspired)
+        const colorSchemes = [
+            { buttonBg: 'bg-blue-500', buttonHover: 'bg-blue-600' }, // Water type
+            { buttonBg: 'bg-red-500', buttonHover: 'bg-red-600' },   // Fire type
+            { buttonBg: 'bg-green-500', buttonHover: 'bg-green-600' }, // Grass type
+            { buttonBg: 'bg-yellow-500', buttonHover: 'bg-yellow-600' }, // Electric type
+        ];
+
+        // Function to set random background
+        function setRandomBackground() {
+            const randomBg = backgrounds[Math.floor(Math.random() * backgrounds.length)];
+            document.body.style.background = randomBg;
+            document.body.style.backgroundSize = 'cover';
+            document.body.style.backgroundPosition = 'center';
+        }
+
+        // Function to set random UI color scheme
+        function setRandomColorScheme() {
+            const randomScheme = colorSchemes[Math.floor(Math.random() * colorSchemes.length)];
+            const buttons = document.querySelectorAll('button');
+            buttons.forEach(button => {
+                button.className = `${randomScheme.buttonBg} text-white`;
+                button.onmouseover = () => button.className = `${randomScheme.buttonHover} text-white`;
+                button.onmouseout = () => button.className = `${randomScheme.buttonBg} text-white`;
+            });
+        }
+
+        // Function to change video (placeholder for when more videos are added)
+        function changeVideo() {
+            const videoPlayer = document.getElementById('videoPlayer');
+            const randomVideo = videos[Math.floor(Math.random() * videos.length)];
+            videoPlayer.src = randomVideo;
+            videoPlayer.load();
+            videoPlayer.play();
+            // Update title (temporary, can be customized when more videos are added)
+            document.querySelector('.title').textContent = 'Pokémon Season 1 Episode 1';
+        }
+
+        // Initialize on page load
+        window.onload = () => {
+            setRandomBackground();
+            setRandomColorScheme();
+            changeVideo(); // Set initial video
+        };
+    </script>
+</body>
+</html>
