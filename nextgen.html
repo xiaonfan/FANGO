@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEXT GEN Video Player</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.5s ease;
+        }
+        .video-container {
+            max-width: 800px;
+            width: 90%;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            animation: fadeIn 1s ease-in;
+        }
+        video {
+            width: 100%;
+            border-radius: 10px;
+        }
+        .title {
+            text-align: center;
+            color: white;
+            font-size: 28px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            animation: glow 2s ease-in-out infinite;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes glow {
+            0%, 100% { text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); }
+            50% { text-shadow: 0 0 10px rgba(0, 255, 255, 0.8), 0 0 20px rgba(0, 255, 255, 0.4); }
+        }
+    </style>
+</head>
+<body>
+    <div class="video-container">
+        <div class="title">NEXT GEN</div>
+        <video id="videoPlayer" controls autoplay>
+            <source src="https://www.dropbox.com/scl/fi/3graawm29kqsu5dogpx6f/BraveDown.Com-A1600b407efdc38b039505c087770e15-1748604536.mp4?rlkey=sotfp7pilph234cyhpgi1lyap&st=ejv6ojep&dl=1" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+
+    <script>
+        // Array of futuristic background styles (images and gradients) for NEXT GEN
+        const backgrounds = [
+            'url("https://images.unsplash.com/photo-1516339901601-2e1b62dc0c45")', // Sci-fi space
+            'url("https://images.unsplash.com/photo-1446776811953-b23d57bd21aa")', // Nebula
+            'linear-gradient(135deg, #1e3c72, #2a5298)', // Futuristic blue gradient
+            'linear-gradient(135deg, #0f0c29, #302b63, #24243e)', // Dark sci-fi gradient
+            'url("https://images.unsplash.com/photo-1506318164473-2dfd9ebedd66")', // Techy cityscape
+        ];
+
+        // Array of UI color schemes for title (futuristic colors)
+        const colorSchemes = [
+            { titleColor: '#00FFFF' }, // Cyan
+            { titleColor: '#FF00FF' }, // Magenta
+            { titleColor: '#00FF00' }, // Neon green
+            { titleColor: '#FFD700' }, // Gold
+        ];
+
+        // Function to set random background
+        function setRandomBackground() {
+            const randomBg = backgrounds[Math.floor(Math.random() * backgrounds.length)];
+            document.body.style.background = randomBg;
+            document.body.style.backgroundSize = 'cover';
+            document.body.style.backgroundPosition = 'center';
+        }
+
+        // Function to set random title color
+        function setRandomColorScheme() {
+            const randomScheme = colorSchemes[Math.floor(Math.random() * colorSchemes.length)];
+            const title = document.querySelector('.title');
+            title.style.color = randomScheme.titleColor;
+        }
+
+        // Initialize on page load
+        window.onload = () => {
+            setRandomBackground();
+            setRandomColorScheme();
+        };
+    </script>
+</body>
+</html>
