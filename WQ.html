@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokémon & NEXT GEN Video Player</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.5s ease;
+        }
+        .video-container {
+            max-width: 800px;
+            width: 90%;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            animation: fadeIn 1s ease-in;
+        }
+        video {
+            width: 100%;
+            border-radius: 10px;
+        }
+        .title {
+            text-align: center;
+            color: white;
+            font-size: 28px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            animation: glow 2s ease-in-out infinite;
+        }
+        .controls {
+            text-align: center;
+            margin-top: 20px;
+        }
+        select {
+            padding: 10px;
+            border-radius: 5px;
+            background-color: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        select:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+        option {
+            background-color: #1a202c;
+            color: white;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes glow {
+            0%, 100% { text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); }
+            50% { text-shadow: 0 0 10px rgba(255, 215, 0, 0.8), 0 0 20px rgba(255, 215, 0, 0.4); }
+        }
+    </style>
+</head>
+<body>
+    <div class="video-container">
+        <div class="title" id="videoTitle">Pokémon Season 1 Episode 2</div>
+        <video id="videoPlayer" controls autoplay>
+            <source src="https://www.dropbox.com/scl/fi/39urw4dro9m95n4jvt1i5/POKEMON-SEASON-1-EPISODE-2.mp4?rlkey=v4h6dkh1m410utc3a02bxorpq&st=h9pkdgko&dl=1" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <div class="controls">
+            <select id="videoSelect" onchange="changeVideo()">
+                <option value="0">Pokémon Season 1 Episode 2</option>
+                <option value="1">NEXT GEN</option>
+            </select>
+        </div>
+    </div>
+
+    <script>
+        // Array of videos with titles
+        const videos = [
+            { 
+                url: "https://www.dropbox.com/scl/fi/39urw4dro9m95n4jvt1i5/POKEMON-SEASON-1-EPISODE-2.mp4?rlkey=v4h6dkh1m410utc3a02bxorpq&st=h9pkdgko&dl=1",
+                title: "Pokémon Season 1 Episode 2"
+            },
+            { 
+                url: "https://www.dropbox.com/scl/fi/3graawm29kqsu5dogpx6f/BraveDown.Com-A1600b407efdc38b039505c087770e15-1748604536.mp4?rlkey=sotfp7pilph234cyhpgi1lyap&st=ejv6ojep&dl=1",
+                title: "NEXT GEN"
+            }
+        ];
+
+        // Array of Pokémon-themed background styles (images and gradients)
+        const backgrounds = [
+            'url("https://images.unsplash.com/photo-1620131592953-6f65e8e4a7ec")', // Pokémon-like forest
+            'url("https://images.unsplash.com/photo-1610215681086-9a4f5e3b7522")', // Vibrant field
+            'linear-gradient(135deg, #ffcb05, #3c5aa6)', // Pokémon yellow/blue gradient
+            'linear-gradient(135deg, #ee1515, #f7f7f7)', // Pokéball red/white gradient
+            'url("https://images.unsplash.com/photo-1600585154340-be6161a56a0c")', // Scenic nature
+        ];
+
+        // Array of UI color schemes for title (Pokémon-inspired colors)
+        const colorSchemes = [
+            { titleColor: '#FFD700' }, // Gold (Pikachu)
+            { titleColor: '#FF4500' }, // Orange-red (Charizard)
+            { titleColor: '#00CED1' }, // Cyan (Water type)
+            { titleColor: '#32CD32' }, // Lime green (Grass type)
+        ];
+
+        // Function to set random background
+        function setRandomBackground() {
+            const randomBg = backgrounds[Math.floor(Math.random() * backgrounds.length)];
+            document.body.style.background = randomBg;
+            document.body.style.backgroundSize = 'cover';
+            document.body.style.backgroundPosition = 'center';
+        }
+
+        // Function to set random title color
+        function setRandomColorScheme() {
+            const randomScheme = colorSchemes[Math.floor(Math.random() * colorSchemes.length)];
+            const title = document.querySelector('.title');
+            title.style.color = randomScheme.titleColor;
+        }
+
+        // Function to change video
+        function changeVideo() {
+            const videoPlayer = document.getElementById('videoPlayer');
+            const videoSelect = document.getElementById('videoSelect');
+            const videoTitle = document.getElementById('videoTitle');
+            const selectedVideo = videos[videoSelect.value];
+            videoPlayer.src = selectedVideo.url;
+            videoTitle.textContent = selectedVideo.title;
+            videoPlayer.load();
+            videoPlayer.play();
+        }
+
+        // Initialize on page load
+        window.onload = () => {
+            setRandomBackground();
+            setRandomColorScheme();
+            // Set initial video (Pokémon Episode 2)
+            changeVideo();
+        };
+    </script>
+</body>
+</html>
