@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Naruto Episode Viewer</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            font-family: 'Georgia', serif;
+            background: linear-gradient(135deg, rgba(30, 30, 30, 0.8), rgba(50, 50, 80, 0.8));
+        }
+
+        .container {
+            position: relative;
+            text-align: center;
+            padding: 25px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 25px;
+            box-shadow: 0 0 25px rgba(255, 215, 0, 0.2);
+            z-index: 2;
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            backdrop-filter: blur(8px);
+        }
+
+        video {
+            width: 82vw;
+            max-width: 850px;
+            border-radius: 15px;
+            border: 2px solid #ffd700;
+            box-shadow: 0 0 12px rgba(255, 215, 0, 0.4);
+            transition: box-shadow 0.3s ease;
+        }
+
+        video:hover {
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.6);
+        }
+
+        .title {
+            color: #ffd700;
+            font-size: 3em;
+            margin-bottom: 20px;
+            text-shadow: 0 0 8px rgba(255, 215, 0, 0.5);
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        .background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            background-size: cover;
+            background-position: center;
+            animation: zoomBackground 18s infinite;
+            opacity: 0.7;
+        }
+
+        @keyframes zoomBackground {
+            0% { background-image: url('https://images.unsplash.com/photo-1519681393784-d120267933ba'); transform: scale(1); }
+            33% { background-image: url('https://images.unsplash.com/photo-1493246507139-91e8fad9978e'); transform: scale(1.05); }
+            66% { background-image: url('https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0'); transform: scale(1.03); }
+            100% { background-image: url('https://images.unsplash.com/photo-1519681393784-d120267933ba'); transform: scale(1); }
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        @media (max-width: 600px) {
+            video {
+                width: 92vw;
+            }
+
+            .title {
+                font-size: 2.2em;
+            }
+
+            .container {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="background"></div>
+    <div class="container">
+        <h1 class="title">Naruto Season 1 - Episode 32</h1>
+        <video controls autoplay>
+            <source src="https://www.dropbox.com/scl/fi/odn6dar93mpohhdvxoig8/NARUTO-SEASON-1-EP-32.mp4?rlkey=2rgfzrbvh15lbpjqwa7dgrfki&st=l0aeigkh&dl=1" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+    <script>
+        // No additional JavaScript needed for basic functionality
+        // Background zoom and pulse effects are handled via CSS
+    </script>
+</body>
+</html>

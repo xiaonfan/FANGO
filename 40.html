@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Naruto Episode Player</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            font-family: 'Arial', sans-serif;
+        }
+
+        /* Dynamic background with gradient animation */
+        .background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, #ff8e53, #b3e5fc);
+            animation: gradientChange 10s ease infinite;
+            z-index: -1;
+        }
+
+        @keyframes gradientChange {
+            0% { background: linear-gradient(45deg, #ff8e53, #b3e5fc); }
+            50% { background: linear-gradient(45deg, #4b5e9e, #a3bffa); }
+            100% { background: linear-gradient(45deg, #ff8e53, #b3e5fc); }
+        }
+
+        /* Video container */
+        .video-container {
+            position: relative;
+            width: 80%;
+            max-width: 800px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            text-align: center;
+        }
+
+        /* Episode and season title */
+        .episode-title {
+            color: #ffffff;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        video {
+            width: 100%;
+            border-radius: 10px;
+        }
+
+        /* Responsive design */
+        @media (max-width: 600px) {
+            .video-container {
+                width: 90%;
+                padding: 10px;
+            }
+
+            .episode-title {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="background"></div>
+    <div class="video-container">
+        <div class="episode-title">Naruto Season 1, Episode 40</div>
+        <video controls>
+            <source src="https://www.dropbox.com/scl/fi/tjqtwg8e7djry0y5xj7rm/NARUTO-SEASON-1-EP-40.mp4?rlkey=ipt5v6fmpjiizhhakoeyj38rm&st=6yy2wuvy&dl=1" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+
+    <script>
+        // Optional: Add subtle interactivity if needed in the future
+        // Currently, no additional functionality as per request
+    </script>
+</body>
+</html>
