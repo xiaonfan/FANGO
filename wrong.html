@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Access Denied</title>
+  
+  <!-- Favicon (Red Cross Icon) -->
+  <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/463/463612.png" type="image/png">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to right, #ff416c, #ff4b2b);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      color: white;
+      text-align: center;
+    }
+
+    .container {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 40px 30px;
+      border-radius: 15px;
+      box-shadow: 0 0 25px rgba(0,0,0,0.3);
+      max-width: 400px;
+      width: 90%;
+    }
+
+    h1 {
+      font-size: 32px;
+      margin-bottom: 20px;
+      color: #fff;
+    }
+
+    p {
+      font-size: 18px;
+      margin-bottom: 30px;
+      color: #f0f0f0;
+    }
+
+    button {
+      padding: 12px 25px;
+      background-color: #fff;
+      color: #ff2d55;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #f0f0f0;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>❌ Access Denied</h1>
+    <p>Incorrect password entered.<br>Please try again or contact Hussain to buy PRO version.</p>
+    <button onclick="goBack()">Go Back</button>
+  </div>
+
+  <script>
+    function goBack() {
+      // Redirect to the password page
+      window.location.href = "https://xiaonfan.github.io/FANGO/password.html";
+    }
+  </script>
+</body>
+</html>
